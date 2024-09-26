@@ -1,0 +1,18 @@
+.mainContainer {
+  height:100vh;
+  overflow: hidden;
+}
+.tools{
+  width: 100%;
+  height: 90px;
+  background-image: linear-gradient(to right top, #6e85a7, #697796, #626a84, #5b5d73, #525163);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.canvas {
+  background-color: white;
+  position: relative;
+  height: calc(100% - 90px);
+  width: 100%;
+}
