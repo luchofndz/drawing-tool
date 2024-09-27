@@ -14,7 +14,6 @@ const DrawingApp = () => {
   const [color, setColor] = useState<string>("#000000");
   const [lineWidth, setLineWidth] = useState<number>(25);
   const [tool, setTool] = useState<"draw" | "erase" | "text">("draw");
-  const [toggleOption, setToggleOption] = useState('web');
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -37,7 +36,6 @@ const DrawingApp = () => {
     event: MouseEvent<HTMLElement>,
     newAlignment: string,
   ) => {
-    setToggleOption(newAlignment);
     switch (newAlignment) {
       case 'draw':
         setTool("draw");
@@ -79,12 +77,11 @@ const DrawingApp = () => {
     }
   };
 
-  const addText = (e: MouseEvent<HTMLCanvasElement>) => {
-    const { offsetX, offsetY } = e.nativeEvent;
+  const addText = ({ nativeEvent }: MouseEvent<HTMLCanvasElement>) => {
+    const { offsetX, offsetY } = nativeEvent;
     const text = prompt("Enter your text:");
     if (text) {
       contextRef.current!.font = `${lineWidth * 2}px Arial`;
-      console.log("colorr", color)
       contextRef.current!.fillStyle = color;
       contextRef.current?.fillText(text, offsetX, offsetY);
     }
@@ -101,7 +98,7 @@ const DrawingApp = () => {
       <div className={styles.tools}>
         <ToggleButtonGroup
           color="info"
-          value={toggleOption}
+          value={tool}
           exclusive
           onChange={handleChange}
           aria-label="Platform"
