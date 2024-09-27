@@ -16,6 +16,7 @@ Split component in 2 childs, one for the board and the other for the toolbar.
 Increment unit testing.
 Impement helpful tooltips and connect API to save the current state and also allow to export it.
 Add more details on UI.
+create folders for files and create a UI for dashboard to access to the functionality.
 
 ## Run:
 first install all running:
