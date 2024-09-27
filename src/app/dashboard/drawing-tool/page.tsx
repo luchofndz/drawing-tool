@@ -6,7 +6,8 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Image from 'next/image'
 
-const DrawingApp = () => {
+const DrawingTool = () => {
+  //TODO: split component in 2 childs, boardComponent and toolBarComponent
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   
@@ -23,6 +24,9 @@ const DrawingApp = () => {
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
     context.lineCap = "round";
     contextRef.current = context;
+
+    //TODO: call api to save contextRef.current data before unmount
+    //TODO: call api here to get state on load and set locally
   }, []);
   
   useEffect(() => {
@@ -159,5 +163,5 @@ const DrawingApp = () => {
   );
 };
 
-export default DrawingApp;
+export default DrawingTool;
 
