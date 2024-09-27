@@ -12,7 +12,7 @@ const DrawingApp = () => {
   
   const [isDrawing, setIsDrawing] = useState(false);
   const [color, setColor] = useState<string>("#000000");
-  const [lineWidth, setLineWidth] = useState<number>(5);
+  const [lineWidth, setLineWidth] = useState<number>(25);
   const [tool, setTool] = useState<"draw" | "erase" | "text">("draw");
   const [toggleOption, setToggleOption] = useState('web');
 
@@ -21,12 +21,16 @@ const DrawingApp = () => {
     if (!canvas) return;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - 110;
-
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
     context.lineCap = "round";
-    context.strokeStyle = color;
-    context.lineWidth = lineWidth;
     contextRef.current = context;
+  }, []);
+  
+  useEffect(() => {
+    if (contextRef.current) {
+      contextRef.current.strokeStyle = color;
+      contextRef.current.lineWidth = lineWidth;
+    }
   }, [color, lineWidth]);
 
   const handleChange = (
@@ -154,8 +158,6 @@ const DrawingApp = () => {
         className={styles.canvas}
         style={{cursor: tool === "text" ? 'text' : 'crosshair' }}
       />
-      {/* added this html reference to use free the icons */}
-      <a href="https://www.flaticon.com/free-icons/font" title="font icons">Font icons created by Freepik - Flaticon</a>
     </div>
   );
 };

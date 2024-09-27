@@ -95,6 +95,8 @@ export default function Home() {
           priority
         />
       </div>
+      {/* added this html reference to use free the icons */}
+      <a href="https://www.flaticon.com/free-icons/font" title="font icons">Font icons created by Freepik - Flaticon</a>
     </main>
   )
 }
